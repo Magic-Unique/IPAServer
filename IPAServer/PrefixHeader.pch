@@ -1,0 +1,24 @@
+//
+//  PrefixHeader.pch
+//  IPAServer
+//
+//  Created by 冷秋 on 2019/6/2.
+//  Copyright © 2019 Magic-Unique All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <AppKit/AppKit.h>
+#import <libextobjc/extobjc.h>
+#import <CommandLine/Command.h>
+#import <CommandLine/ANSI.h>
+#import <CommandLine/Launcher.h>
+#import <CommandLine/Tools.h>
+#import <MUFoundation/MUPath.h>
+#import <GCDWebServer/GCDWebServer.h>
+#import <GCDWebServer/GCDWebServerDataRequest.h>
+#import <GCDWebServer/GCDWebServerDataResponse.h>
+#import <AFNetworking/AFNetworking.h>
+
+#endif /* PrefixHeader_pch */

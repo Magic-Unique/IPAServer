@@ -1,0 +1,621 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		12C70B111608DDC9DBADB789 /* libPods-IPAServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57264B35B7A25FC677833382 /* libPods-IPAServer.a */; };
+		6D0F6B95239535FC00822132 /* IPAServerManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0F6B94239535FC00822132 /* IPAServerManifest.m */; };
+		6D0F6B9823953CE300822132 /* IPAServerManifestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0F6B9723953CE300822132 /* IPAServerManifestManager.m */; };
+		6DB0DB5A22A41E4700232E4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0DB5922A41E4700232E4A /* main.m */; };
+		6DB4BEC923901B5300BD1CF2 /* IPAServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB4BEC823901B5300BD1CF2 /* IPAServer.m */; };
+		6DCAF24123940382000FCCB5 /* IPAServerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCAF24023940382000FCCB5 /* IPAServerConfiguration.m */; };
+		6DCAF2442394039B000FCCB5 /* IPAServerPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCAF2432394039B000FCCB5 /* IPAServerPackage.m */; };
+		6DCAF24723940CE4000FCCB5 /* IPAServerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCAF24623940CE4000FCCB5 /* IPAServerUtils.m */; };
+		6DCF981C2386D81500B5AB22 /* QRCode+IPAServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF981B2386D81500B5AB22 /* QRCode+IPAServer.m */; };
+		6DCF98222386E9D300B5AB22 /* IPAInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCF98212386E9D300B5AB22 /* IPAInstaller.m */; };
+		6DE4858522A553FA00491BA5 /* qrencode_inner.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4857022A553FA00491BA5 /* qrencode_inner.h */; };
+		6DE4858622A553FA00491BA5 /* mask.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4857122A553FA00491BA5 /* mask.h */; };
+		6DE4858722A553FA00491BA5 /* qrinput.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4857222A553FA00491BA5 /* qrinput.h */; };
+		6DE4858822A553FA00491BA5 /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4857322A553FA00491BA5 /* bitstream.c */; };
+		6DE4858922A553FA00491BA5 /* rsecc.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4857422A553FA00491BA5 /* rsecc.h */; };
+		6DE4858A22A553FA00491BA5 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4857522A553FA00491BA5 /* config.h */; };
+		6DE4858B22A553FA00491BA5 /* mmask.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4857622A553FA00491BA5 /* mmask.h */; };
+		6DE4858C22A553FA00491BA5 /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4857722A553FA00491BA5 /* qrencode.c */; };
+		6DE4858D22A553FA00491BA5 /* qrspec.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4857822A553FA00491BA5 /* qrspec.h */; };
+		6DE4858E22A553FA00491BA5 /* mqrspec.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4857922A553FA00491BA5 /* mqrspec.h */; };
+		6DE4858F22A553FA00491BA5 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4857A22A553FA00491BA5 /* split.c */; };
+		6DE4859122A553FA00491BA5 /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4857C22A553FA00491BA5 /* qrinput.c */; };
+		6DE4859222A553FA00491BA5 /* bitstream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4857D22A553FA00491BA5 /* bitstream.h */; };
+		6DE4859322A553FA00491BA5 /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4857E22A553FA00491BA5 /* mask.c */; };
+		6DE4859422A553FA00491BA5 /* rsecc.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4857F22A553FA00491BA5 /* rsecc.c */; };
+		6DE4859522A553FA00491BA5 /* mqrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4858022A553FA00491BA5 /* mqrspec.c */; };
+		6DE4859622A553FA00491BA5 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4858122A553FA00491BA5 /* qrspec.c */; };
+		6DE4859722A553FA00491BA5 /* qrencode.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4858222A553FA00491BA5 /* qrencode.h */; };
+		6DE4859822A553FA00491BA5 /* mmask.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4858322A553FA00491BA5 /* mmask.c */; };
+		6DE4859922A553FA00491BA5 /* split.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4858422A553FA00491BA5 /* split.h */; };
+		6DE4859A22A5542F00491BA5 /* libqrencode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE4853B22A553B100491BA5 /* libqrencode.a */; };
+		6DE4859D22A5653500491BA5 /* QRCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4859B22A5653500491BA5 /* QRCode.h */; };
+		6DE4859E22A5653500491BA5 /* QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4859C22A5653500491BA5 /* QRCode.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6DB0DB5422A41E4700232E4A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		57264B35B7A25FC677833382 /* libPods-IPAServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IPAServer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		652959249A9FFFCE6578BFF5 /* Pods-IPAServer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IPAServer.debug.xcconfig"; path = "Target Support Files/Pods-IPAServer/Pods-IPAServer.debug.xcconfig"; sourceTree = "<group>"; };
+		6D0F6B93239535FC00822132 /* IPAServerManifest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAServerManifest.h; sourceTree = "<group>"; };
+		6D0F6B94239535FC00822132 /* IPAServerManifest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAServerManifest.m; sourceTree = "<group>"; };
+		6D0F6B9623953CE300822132 /* IPAServerManifestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAServerManifestManager.h; sourceTree = "<group>"; };
+		6D0F6B9723953CE300822132 /* IPAServerManifestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAServerManifestManager.m; sourceTree = "<group>"; };
+		6DB0DB5622A41E4700232E4A /* IPAServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IPAServer; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DB0DB5922A41E4700232E4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6DB0DB6022A41EBA00232E4A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		6DB4BEC723901B5300BD1CF2 /* IPAServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAServer.h; sourceTree = "<group>"; };
+		6DB4BEC823901B5300BD1CF2 /* IPAServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAServer.m; sourceTree = "<group>"; };
+		6DCAF23F23940382000FCCB5 /* IPAServerConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAServerConfiguration.h; sourceTree = "<group>"; };
+		6DCAF24023940382000FCCB5 /* IPAServerConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAServerConfiguration.m; sourceTree = "<group>"; };
+		6DCAF2422394039B000FCCB5 /* IPAServerPackage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAServerPackage.h; sourceTree = "<group>"; };
+		6DCAF2432394039B000FCCB5 /* IPAServerPackage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAServerPackage.m; sourceTree = "<group>"; };
+		6DCAF24523940CE4000FCCB5 /* IPAServerUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAServerUtils.h; sourceTree = "<group>"; };
+		6DCAF24623940CE4000FCCB5 /* IPAServerUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAServerUtils.m; sourceTree = "<group>"; };
+		6DCF981A2386D81500B5AB22 /* QRCode+IPAServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QRCode+IPAServer.h"; sourceTree = "<group>"; };
+		6DCF981B2386D81500B5AB22 /* QRCode+IPAServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "QRCode+IPAServer.m"; sourceTree = "<group>"; };
+		6DCF98202386E9D300B5AB22 /* IPAInstaller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAInstaller.h; sourceTree = "<group>"; };
+		6DCF98212386E9D300B5AB22 /* IPAInstaller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAInstaller.m; sourceTree = "<group>"; };
+		6DE4853B22A553B100491BA5 /* libqrencode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libqrencode.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DE4857022A553FA00491BA5 /* qrencode_inner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode_inner.h; sourceTree = "<group>"; };
+		6DE4857122A553FA00491BA5 /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mask.h; sourceTree = "<group>"; };
+		6DE4857222A553FA00491BA5 /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrinput.h; sourceTree = "<group>"; };
+		6DE4857322A553FA00491BA5 /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
+		6DE4857422A553FA00491BA5 /* rsecc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsecc.h; sourceTree = "<group>"; };
+		6DE4857522A553FA00491BA5 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		6DE4857622A553FA00491BA5 /* mmask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mmask.h; sourceTree = "<group>"; };
+		6DE4857722A553FA00491BA5 /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrencode.c; sourceTree = "<group>"; };
+		6DE4857822A553FA00491BA5 /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrspec.h; sourceTree = "<group>"; };
+		6DE4857922A553FA00491BA5 /* mqrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mqrspec.h; sourceTree = "<group>"; };
+		6DE4857A22A553FA00491BA5 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
+		6DE4857C22A553FA00491BA5 /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrinput.c; sourceTree = "<group>"; };
+		6DE4857D22A553FA00491BA5 /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
+		6DE4857E22A553FA00491BA5 /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mask.c; sourceTree = "<group>"; };
+		6DE4857F22A553FA00491BA5 /* rsecc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsecc.c; sourceTree = "<group>"; };
+		6DE4858022A553FA00491BA5 /* mqrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mqrspec.c; sourceTree = "<group>"; };
+		6DE4858122A553FA00491BA5 /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrspec.c; sourceTree = "<group>"; };
+		6DE4858222A553FA00491BA5 /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode.h; sourceTree = "<group>"; };
+		6DE4858322A553FA00491BA5 /* mmask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mmask.c; sourceTree = "<group>"; };
+		6DE4858422A553FA00491BA5 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		6DE4859B22A5653500491BA5 /* QRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRCode.h; sourceTree = "<group>"; };
+		6DE4859C22A5653500491BA5 /* QRCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRCode.m; sourceTree = "<group>"; };
+		FAD9793FF69480E3834B9ADE /* Pods-IPAServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IPAServer.release.xcconfig"; path = "Target Support Files/Pods-IPAServer/Pods-IPAServer.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6DB0DB5322A41E4700232E4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DE4859A22A5542F00491BA5 /* libqrencode.a in Frameworks */,
+				12C70B111608DDC9DBADB789 /* libPods-IPAServer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DE4853922A553B100491BA5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6DB0DB4D22A41E4700232E4A = {
+			isa = PBXGroup;
+			children = (
+				6DB0DB5822A41E4700232E4A /* IPAServer */,
+				6DE4853C22A553B100491BA5 /* qrencode */,
+				6DB0DB5722A41E4700232E4A /* Products */,
+				A7525603A3F5D0C142E7BC92 /* Pods */,
+				DF1FE966C642745531B22087 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6DB0DB5722A41E4700232E4A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DB0DB5622A41E4700232E4A /* IPAServer */,
+				6DE4853B22A553B100491BA5 /* libqrencode.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6DB0DB5822A41E4700232E4A /* IPAServer */ = {
+			isa = PBXGroup;
+			children = (
+				6DCAF23E23940362000FCCB5 /* IPAServer */,
+				6DB0DB5922A41E4700232E4A /* main.m */,
+				6DCF981A2386D81500B5AB22 /* QRCode+IPAServer.h */,
+				6DCF981B2386D81500B5AB22 /* QRCode+IPAServer.m */,
+				6DCF98202386E9D300B5AB22 /* IPAInstaller.h */,
+				6DCF98212386E9D300B5AB22 /* IPAInstaller.m */,
+				6DB0DB6022A41EBA00232E4A /* PrefixHeader.pch */,
+			);
+			path = IPAServer;
+			sourceTree = "<group>";
+		};
+		6DCAF23E23940362000FCCB5 /* IPAServer */ = {
+			isa = PBXGroup;
+			children = (
+				6DB4BEC723901B5300BD1CF2 /* IPAServer.h */,
+				6DB4BEC823901B5300BD1CF2 /* IPAServer.m */,
+				6DCAF23F23940382000FCCB5 /* IPAServerConfiguration.h */,
+				6DCAF24023940382000FCCB5 /* IPAServerConfiguration.m */,
+				6DCAF2422394039B000FCCB5 /* IPAServerPackage.h */,
+				6DCAF2432394039B000FCCB5 /* IPAServerPackage.m */,
+				6D0F6B93239535FC00822132 /* IPAServerManifest.h */,
+				6D0F6B94239535FC00822132 /* IPAServerManifest.m */,
+				6D0F6B9623953CE300822132 /* IPAServerManifestManager.h */,
+				6D0F6B9723953CE300822132 /* IPAServerManifestManager.m */,
+				6DCAF24523940CE4000FCCB5 /* IPAServerUtils.h */,
+				6DCAF24623940CE4000FCCB5 /* IPAServerUtils.m */,
+			);
+			path = IPAServer;
+			sourceTree = "<group>";
+		};
+		6DE4853C22A553B100491BA5 /* qrencode */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4856F22A553FA00491BA5 /* libqrencode */,
+				6DE4859B22A5653500491BA5 /* QRCode.h */,
+				6DE4859C22A5653500491BA5 /* QRCode.m */,
+			);
+			path = qrencode;
+			sourceTree = "<group>";
+		};
+		6DE4856F22A553FA00491BA5 /* libqrencode */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4857322A553FA00491BA5 /* bitstream.c */,
+				6DE4857D22A553FA00491BA5 /* bitstream.h */,
+				6DE4857522A553FA00491BA5 /* config.h */,
+				6DE4857E22A553FA00491BA5 /* mask.c */,
+				6DE4857122A553FA00491BA5 /* mask.h */,
+				6DE4858322A553FA00491BA5 /* mmask.c */,
+				6DE4857622A553FA00491BA5 /* mmask.h */,
+				6DE4858022A553FA00491BA5 /* mqrspec.c */,
+				6DE4857922A553FA00491BA5 /* mqrspec.h */,
+				6DE4857022A553FA00491BA5 /* qrencode_inner.h */,
+				6DE4857722A553FA00491BA5 /* qrencode.c */,
+				6DE4858222A553FA00491BA5 /* qrencode.h */,
+				6DE4857C22A553FA00491BA5 /* qrinput.c */,
+				6DE4857222A553FA00491BA5 /* qrinput.h */,
+				6DE4858122A553FA00491BA5 /* qrspec.c */,
+				6DE4857822A553FA00491BA5 /* qrspec.h */,
+				6DE4857F22A553FA00491BA5 /* rsecc.c */,
+				6DE4857422A553FA00491BA5 /* rsecc.h */,
+				6DE4857A22A553FA00491BA5 /* split.c */,
+				6DE4858422A553FA00491BA5 /* split.h */,
+			);
+			path = libqrencode;
+			sourceTree = "<group>";
+		};
+		A7525603A3F5D0C142E7BC92 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				652959249A9FFFCE6578BFF5 /* Pods-IPAServer.debug.xcconfig */,
+				FAD9793FF69480E3834B9ADE /* Pods-IPAServer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DF1FE966C642745531B22087 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57264B35B7A25FC677833382 /* libPods-IPAServer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6DE4853722A553B100491BA5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DE4859D22A5653500491BA5 /* QRCode.h in Headers */,
+				6DE4858B22A553FA00491BA5 /* mmask.h in Headers */,
+				6DE4859222A553FA00491BA5 /* bitstream.h in Headers */,
+				6DE4858D22A553FA00491BA5 /* qrspec.h in Headers */,
+				6DE4858E22A553FA00491BA5 /* mqrspec.h in Headers */,
+				6DE4859922A553FA00491BA5 /* split.h in Headers */,
+				6DE4858622A553FA00491BA5 /* mask.h in Headers */,
+				6DE4858922A553FA00491BA5 /* rsecc.h in Headers */,
+				6DE4858522A553FA00491BA5 /* qrencode_inner.h in Headers */,
+				6DE4859722A553FA00491BA5 /* qrencode.h in Headers */,
+				6DE4858722A553FA00491BA5 /* qrinput.h in Headers */,
+				6DE4858A22A553FA00491BA5 /* config.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		6DB0DB5522A41E4700232E4A /* IPAServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DB0DB5D22A41E4700232E4A /* Build configuration list for PBXNativeTarget "IPAServer" */;
+			buildPhases = (
+				20255F7FF2D439721C769647 /* [CP] Check Pods Manifest.lock */,
+				6DB0DB5222A41E4700232E4A /* Sources */,
+				6DB0DB5322A41E4700232E4A /* Frameworks */,
+				6DB0DB5422A41E4700232E4A /* CopyFiles */,
+				6D17647622A8F84800F457AF /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IPAServer;
+			productName = IPAServer;
+			productReference = 6DB0DB5622A41E4700232E4A /* IPAServer */;
+			productType = "com.apple.product-type.tool";
+		};
+		6DE4853A22A553B100491BA5 /* qrencode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DE4854122A553B100491BA5 /* Build configuration list for PBXNativeTarget "qrencode" */;
+			buildPhases = (
+				6DE4853722A553B100491BA5 /* Headers */,
+				6DE4853822A553B100491BA5 /* Sources */,
+				6DE4853922A553B100491BA5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = qrencode;
+			productName = qrencode;
+			productReference = 6DE4853B22A553B100491BA5 /* libqrencode.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6DB0DB4E22A41E4700232E4A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Magic-Unique";
+				TargetAttributes = {
+					6DB0DB5522A41E4700232E4A = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					6DE4853A22A553B100491BA5 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 6DB0DB5122A41E4700232E4A /* Build configuration list for PBXProject "IPAServer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6DB0DB4D22A41E4700232E4A;
+			productRefGroup = 6DB0DB5722A41E4700232E4A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6DB0DB5522A41E4700232E4A /* IPAServer */,
+				6DE4853A22A553B100491BA5 /* qrencode */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20255F7FF2D439721C769647 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IPAServer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D17647622A8F84800F457AF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#!/bin/bash\n\nTARGET_BIN=\"ipainstaller\"\n\nif [[ \"${CONFIGURATION}\" == \"Debug\" ]]; then\nexit 0;\nfi\n\nrm \"/usr/local/bin/${TARGET_BIN}\"\ncp \"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}\" \"/usr/local/bin/${TARGET_BIN}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6DB0DB5222A41E4700232E4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DCF98222386E9D300B5AB22 /* IPAInstaller.m in Sources */,
+				6D0F6B95239535FC00822132 /* IPAServerManifest.m in Sources */,
+				6DCAF2442394039B000FCCB5 /* IPAServerPackage.m in Sources */,
+				6DCAF24723940CE4000FCCB5 /* IPAServerUtils.m in Sources */,
+				6DB4BEC923901B5300BD1CF2 /* IPAServer.m in Sources */,
+				6D0F6B9823953CE300822132 /* IPAServerManifestManager.m in Sources */,
+				6DB0DB5A22A41E4700232E4A /* main.m in Sources */,
+				6DCAF24123940382000FCCB5 /* IPAServerConfiguration.m in Sources */,
+				6DCF981C2386D81500B5AB22 /* QRCode+IPAServer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DE4853822A553B100491BA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DE4858F22A553FA00491BA5 /* split.c in Sources */,
+				6DE4859622A553FA00491BA5 /* qrspec.c in Sources */,
+				6DE4859122A553FA00491BA5 /* qrinput.c in Sources */,
+				6DE4859322A553FA00491BA5 /* mask.c in Sources */,
+				6DE4859822A553FA00491BA5 /* mmask.c in Sources */,
+				6DE4859422A553FA00491BA5 /* rsecc.c in Sources */,
+				6DE4859522A553FA00491BA5 /* mqrspec.c in Sources */,
+				6DE4858C22A553FA00491BA5 /* qrencode.c in Sources */,
+				6DE4858822A553FA00491BA5 /* bitstream.c in Sources */,
+				6DE4859E22A5653500491BA5 /* QRCode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6DB0DB5B22A41E4700232E4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6DB0DB5C22A41E4700232E4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6DB0DB5E22A41E4700232E4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 652959249A9FFFCE6578BFF5 /* Pods-IPAServer.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "${TARGET_NAME}/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"HAVE_CONFIG_H=1",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CommandLine\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GCDWebServer\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MUFoundation\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = "${SRCROOT}/qrencode/**";
+			};
+			name = Debug;
+		};
+		6DB0DB5F22A41E4700232E4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAD9793FF69480E3834B9ADE /* Pods-IPAServer.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "${TARGET_NAME}/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"HAVE_CONFIG_H=1",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CommandLine\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GCDWebServer\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MUFoundation\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = "${SRCROOT}/qrencode/**";
+			};
+			name = Release;
+		};
+		6DE4854222A553B100491BA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = HAVE_CONFIG_H;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6DE4854322A553B100491BA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = HAVE_CONFIG_H;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6DB0DB5122A41E4700232E4A /* Build configuration list for PBXProject "IPAServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DB0DB5B22A41E4700232E4A /* Debug */,
+				6DB0DB5C22A41E4700232E4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DB0DB5D22A41E4700232E4A /* Build configuration list for PBXNativeTarget "IPAServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DB0DB5E22A41E4700232E4A /* Debug */,
+				6DB0DB5F22A41E4700232E4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DE4854122A553B100491BA5 /* Build configuration list for PBXNativeTarget "qrencode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DE4854222A553B100491BA5 /* Debug */,
+				6DE4854322A553B100491BA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6DB0DB4E22A41E4700232E4A /* Project object */;
+}
