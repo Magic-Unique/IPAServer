@@ -83,24 +83,23 @@ DEPENDENCIES:
   - SSZipArchive
 
 SPEC REPOS:
-  "git@git.oschina.net:pica/specs.git":
-    - CommandLine
   https://github.com/CocoaPods/Specs.git:
     - GCDWebServer
     - MUFoundation
   trunk:
     - AFNetworking
+    - CommandLine
     - libextobjc
     - SSZipArchive
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  CommandLine: dbe6d9791b0205105ad09589bc1c82f4166a82ed
+  CommandLine: 6f3fa6faf8c9efb2b2db790c9872f92195831589
   GCDWebServer: ead88cd14596dd4eae4f5830b8877c87c8728990
   libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
   MUFoundation: d56f948f4c818f46a19ead18f38014e6330f40c3
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
 
-PODFILE CHECKSUM: 0667806157b6940d9b9ddcf4e018e5d17e08f4cb
+PODFILE CHECKSUM: 145fff52948e2b55c2ff5cd332a2c912f6ca2150
 
 COCOAPODS: 1.8.4
