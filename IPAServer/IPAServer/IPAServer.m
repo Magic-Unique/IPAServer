@@ -143,14 +143,7 @@
         
         do {
             CLInfo(@"Reading MD5...");
-            NSString *MD5 = ({
-                NSString *result = CLLaunch(nil, @"/sbin/md5", ipaPath.string, nil);
-                if (result) {
-                    result = [result componentsSeparatedByString:@" "].lastObject;
-                    result = [result substringToIndex:32];
-                }
-                result;
-            });
+            NSString *MD5 = ipaPath.MD5;
             CLInfo(@"Read MD5: %@", MD5);
             
             MUPath *packageDirectory = [self.packagesDirectory subpathWithComponent:MD5];
