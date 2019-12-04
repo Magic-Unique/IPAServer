@@ -8,11 +8,31 @@
 
 #import "IPAServerManifestManager.h"
 
+@implementation IPAServerManifestUploadResponse
+
++ (instancetype)responseWithDictionary:(NSDictionary *)dictionary {
+    return [[self alloc] initWithDictionary:dictionary];
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (self) {
+        [self setValuesForKeysWithDictionary:dictionary];
+    }
+    return self;
+}
+
+@end
+
+
+
+
+
 @interface IPAServerManifestUploadManager : NSObject
 
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
 
-@property (nonatomic, copy) NSString *url;
+@property (nonatomic, strong) IPAServerManifestUploadResponse *lastResponse;
 
 @property (nonatomic, strong) NSData *data;
 
@@ -28,12 +48,12 @@
     _policy = policy;
     if (policy == IPAManifestUploadingPolicyPreuploadBeforeInstall) {
         [self.queue addOperationWithBlock:^{
-            self.url = [self syncUpload];
+            self.lastResponse = [self syncUpload];
         }];
     }
 }
 
-- (NSString *)syncUpload {
+- (IPAServerManifestUploadResponse *)syncUpload {
     dispatch_semaphore_t semaphore_t = dispatch_semaphore_create(0);
     __block NSDictionary *_response = nil;
     __block NSError *_error = nil;
@@ -54,7 +74,10 @@
     }];
     dispatch_semaphore_wait(semaphore_t, DISPATCH_TIME_FOREVER);
     if (_response) {
-        return _response[@"link"];
+        IPAServerManifestUploadResponse *response = [IPAServerManifestUploadResponse responseWithDictionary:_response];
+        if (response.success) {
+            return response;
+        }
     }
     return nil;
 }
@@ -62,14 +85,14 @@
 - (void)getDownloadURL:(void (^)(NSString *))block {
     [self.queue addOperationWithBlock:^{
         if (self.policy == IPAManifestUploadingPolicyPreuploadBeforeInstall) {
-            NSString *url = self.url;
+            IPAServerManifestUploadResponse *response = self.lastResponse;
             dispatch_async(dispatch_get_main_queue(), ^{
-                block(url);
+                block(response.link);
             });
-            self.url = [self syncUpload];
+            self.lastResponse = [self syncUpload];
         } else {
-            NSString *url = [self syncUpload];
-            block(url);
+            IPAServerManifestUploadResponse *lastResponse = [self syncUpload];
+            block(lastResponse.link);
         }
     }];
 }

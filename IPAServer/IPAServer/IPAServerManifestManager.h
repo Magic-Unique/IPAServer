@@ -11,6 +11,22 @@
 #import "IPAServerManifest.h"
 #import "IPAServerConfiguration.h"
 
+
+
+@interface IPAServerManifestUploadResponse : NSObject
+
+@property (nonatomic, copy, readonly) NSString *expiry;
+
+@property (nonatomic, copy, readonly) NSString *key;
+
+@property (nonatomic, copy, readonly) NSString *link;
+
+@property (nonatomic, assign, readonly) BOOL success;
+
+@end
+
+
+
 @interface IPAServerManifestManager : NSObject
 
 @property (nonatomic, strong, readonly) AFHTTPSessionManager *sessionManager;

@@ -10,6 +10,7 @@
 		12C70B111608DDC9DBADB789 /* libPods-IPAServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57264B35B7A25FC677833382 /* libPods-IPAServer.a */; };
 		6D0F6B95239535FC00822132 /* IPAServerManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0F6B94239535FC00822132 /* IPAServerManifest.m */; };
 		6D0F6B9823953CE300822132 /* IPAServerManifestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0F6B9723953CE300822132 /* IPAServerManifestManager.m */; };
+		6D49F8F3239743E8002B1784 /* IPAInstaller+CommandLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49F8F2239743E8002B1784 /* IPAInstaller+CommandLine.m */; };
 		6DB0DB5A22A41E4700232E4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0DB5922A41E4700232E4A /* main.m */; };
 		6DB4BEC923901B5300BD1CF2 /* IPAServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB4BEC823901B5300BD1CF2 /* IPAServer.m */; };
 		6DCAF24123940382000FCCB5 /* IPAServerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCAF24023940382000FCCB5 /* IPAServerConfiguration.m */; };
@@ -61,6 +62,8 @@
 		6D0F6B94239535FC00822132 /* IPAServerManifest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAServerManifest.m; sourceTree = "<group>"; };
 		6D0F6B9623953CE300822132 /* IPAServerManifestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAServerManifestManager.h; sourceTree = "<group>"; };
 		6D0F6B9723953CE300822132 /* IPAServerManifestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAServerManifestManager.m; sourceTree = "<group>"; };
+		6D49F8F1239743E8002B1784 /* IPAInstaller+CommandLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IPAInstaller+CommandLine.h"; sourceTree = "<group>"; };
+		6D49F8F2239743E8002B1784 /* IPAInstaller+CommandLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IPAInstaller+CommandLine.m"; sourceTree = "<group>"; };
 		6DB0DB5622A41E4700232E4A /* IPAServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IPAServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DB0DB5922A41E4700232E4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6DB0DB6022A41EBA00232E4A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				6DCF981B2386D81500B5AB22 /* QRCode+IPAServer.m */,
 				6DCF98202386E9D300B5AB22 /* IPAInstaller.h */,
 				6DCF98212386E9D300B5AB22 /* IPAInstaller.m */,
+				6D49F8F1239743E8002B1784 /* IPAInstaller+CommandLine.h */,
+				6D49F8F2239743E8002B1784 /* IPAInstaller+CommandLine.m */,
 				6DB0DB6022A41EBA00232E4A /* PrefixHeader.pch */,
 			);
 			path = IPAServer;
@@ -377,6 +382,7 @@
 				6DCAF2442394039B000FCCB5 /* IPAServerPackage.m in Sources */,
 				6DCAF24723940CE4000FCCB5 /* IPAServerUtils.m in Sources */,
 				6DB4BEC923901B5300BD1CF2 /* IPAServer.m in Sources */,
+				6D49F8F3239743E8002B1784 /* IPAInstaller+CommandLine.m in Sources */,
 				6D0F6B9823953CE300822132 /* IPAServerManifestManager.m in Sources */,
 				6DB0DB5A22A41E4700232E4A /* main.m in Sources */,
 				6DCAF24123940382000FCCB5 /* IPAServerConfiguration.m in Sources */,

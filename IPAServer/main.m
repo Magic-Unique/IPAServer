@@ -7,11 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <qrencode.h>
-#import "QRCode+IPAServer.h"
 #import "IPAInstaller.h"
-
-#import "IPAServer/IPAServer.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
