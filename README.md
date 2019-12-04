@@ -1,9 +1,18 @@
 # IPAServer
 
 [中文说明](README.zh_CN.md)
+
 An IPA Wireless Installer
 
 # Install
+
+## 1. Install with Homebrew
+
+```bash
+$ brew tap magic-unique/tap && brew install ipainstaller
+```
+
+## 2. Install newest binary
 
 1. Clone (Download *.zip) repo.
 2. `$ pod install`

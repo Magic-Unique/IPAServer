@@ -1,9 +1,18 @@
 # IPAServer
 
 [English](README.md)
+
 IPA 无线安装工具
 
 # 安装
+
+## 1. 使用 Homebrew 安装
+
+```bash
+$ brew tap magic-unique/tap && brew install ipainstaller
+```
+
+## 2. 编译最新的二进制文件
 
 1. 克隆 (下载 *.zip) 此项目.
 2. `$ pod install`
