@@ -123,8 +123,13 @@
                               IPAServerPackage *package = self.importedPackages[target];
                               MUPath *path = package.rootDirectory;
                               path = [path subpathWithComponent:@"package.ipa"];
-                              GCDWebServerFileResponse *response = [GCDWebServerFileResponse responseWithFile:path.string];
-                              completionBlock(response);
+                              if (path.isFile) {
+                                  GCDWebServerFileResponse *response = [GCDWebServerFileResponse responseWithFile:path.string];
+                                  completionBlock(response);
+                              } else {
+                                  GCDWebServerResponse *response = [GCDWebServerResponse responseWithStatusCode:404];
+                                  completionBlock(response);
+                              }
                           } @catch (NSException *exception) {
                               completionBlock([GCDWebServerResponse responseWithStatusCode:404]);
                           } @finally {}

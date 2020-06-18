@@ -138,7 +138,11 @@
 
 - (void)getDownloadURLForKey:(NSString *)key completed:(void (^)(NSString *))completion {
     IPAServerManifestUploadManager *mgr = self.targets[key];
-    [mgr getDownloadURL:completion];
+    if (!mgr) {
+        !completion?:completion(nil);
+    } else {
+        [mgr getDownloadURL:completion];
+    }
 }
 
 @end
