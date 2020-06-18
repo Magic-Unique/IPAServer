@@ -20,6 +20,11 @@
         MUPath *input = [MUPath pathWithString:[process pathForIndex:0]];
         NSString *port = [process stringForQuery:@"port"];
         
+        if (!input.isFile) {
+            CLError(@"The file is not exist.");
+            return 1;
+        }
+        
         MUPath *rootDirectory = [[MUPath tempPath] subpathWithComponent:[NSUUID UUID].UUIDString];
         [rootDirectory createDirectoryWithCleanContents:YES];
         
