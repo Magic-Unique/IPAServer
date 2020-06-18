@@ -13,7 +13,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         [GCDWebServer setLogLevel:5];
         CLMainExplain = @"IPA Wireless Installer";
-        CLCommand.mainCommand.version = @"1.0.0";
+        CLCommand.mainCommand.version = @"1.1.0";
         CLMakeSubcommand(IPAInstaller, __init_);
         CLCommandMain();
     }
