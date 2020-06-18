@@ -30,6 +30,7 @@
 - (instancetype)initWithConfiguration:(IPAServerConfiguration *)configuration;
 
 - (void)import:(MUPath *)ipaPath
+           key:(NSString *)key
        success:(void (^)(IPAServerPackage *package))success
        failure:(void (^)(NSError *error))failure;
 

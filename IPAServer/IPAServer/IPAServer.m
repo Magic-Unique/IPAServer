@@ -132,6 +132,7 @@
 }
 
 - (void)import:(MUPath *)ipaPath
+           key:(NSString *)key
        success:(void (^)(IPAServerPackage *))success
        failure:(void (^)(NSError *))failure {
     [self.importQueue addOperationWithBlock:^{
@@ -142,13 +143,10 @@
         [tempPath createDirectoryWithCleanContents:YES];
         
         do {
-            CLInfo(@"Reading MD5...");
-            NSString *MD5 = ipaPath.MD5;
-            CLInfo(@"Read MD5: %@", MD5);
             
-            MUPath *packageDirectory = [self.packagesDirectory subpathWithComponent:MD5];
+            MUPath *packageDirectory = [self.packagesDirectory subpathWithComponent:key];
             if (packageDirectory.isDirectory) {
-                package = self.importedPackages[MD5];
+                package = self.importedPackages[key];
                 break;
             }
             [packageDirectory createDirectoryWithCleanContents:YES];
@@ -188,9 +186,9 @@
             [AppIconPath copyTo:[packageDirectory subpathWithComponent:@"icon.png"] autoCover:YES];
             
             package = [[IPAServerPackage alloc] initWithRootDirectory:packageDirectory];
-            self.importedPackages[MD5] = package;
+            self.importedPackages[key] = package;
             IPAServerManifest *manifest = [self manifestWithPackage:package];
-            [self.manifestManager setManifest:manifest forKey:MD5];
+            [self.manifestManager setManifest:manifest forKey:key];
         } while (NO);
         
         [tempPath remove];

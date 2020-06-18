@@ -41,7 +41,12 @@
         } else {
             CLInfo(@"Server start at %@", port);
         }
+        CLInfo(@"Reading MD5...");
+        NSString *MD5 = input.MD5;
+        CLInfo(@"Read MD5: %@", MD5);
+        
         [server import:input
+                   key:MD5
                success:^(IPAServerPackage *package) {
                    NSString *url = [server downloadURLWithPackage:package];
                    QRCode *code = [QRCode codeWithString:url version:0 level:QRCodeLevelL mode:QRCodeMode8BitData];
