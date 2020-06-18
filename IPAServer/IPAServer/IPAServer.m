@@ -107,6 +107,9 @@
                               IPAServerPackage *package = self.importedPackages[target];
                               MUPath *path = package.rootDirectory;
                               path = [path subpathWithComponent:@"icon.png"];
+                              if (!path.isFile) {
+                                  [IPAServerUtils saveDefaultIcon:path];
+                              }
                               GCDWebServerFileResponse *response = [GCDWebServerFileResponse responseWithFile:path.string];
                               completionBlock(response);
                           } @catch (NSException *exception) {

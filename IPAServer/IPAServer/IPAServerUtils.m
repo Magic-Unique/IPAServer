@@ -13,6 +13,8 @@
 #include <arpa/inet.h>
 #include <ifaddrs.h>
 
+#import "IPAServerDefaultIcon.h"
+
 @implementation IPAServerUtils
 
 + (NSString *)LANAddress {
@@ -48,6 +50,11 @@
         freeifaddrs(addrs);
     }
     return localIP;
+}
+
++ (void)saveDefaultIcon:(MUPath *)path {
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:IPA_DEFAULT_ICON_BASE64 options:kNilOptions];
+    [data writeToFile:path.string atomically:YES];
 }
 
 @end

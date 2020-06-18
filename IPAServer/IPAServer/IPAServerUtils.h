@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)LANAddress;
 
++ (void)saveDefaultIcon:(MUPath *)path;
+
 @end
 
 NS_ASSUME_NONNULL_END

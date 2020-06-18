@@ -64,6 +64,7 @@
 		6D0F6B9723953CE300822132 /* IPAServerManifestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAServerManifestManager.m; sourceTree = "<group>"; };
 		6D49F8F1239743E8002B1784 /* IPAInstaller+CommandLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IPAInstaller+CommandLine.h"; sourceTree = "<group>"; };
 		6D49F8F2239743E8002B1784 /* IPAInstaller+CommandLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IPAInstaller+CommandLine.m"; sourceTree = "<group>"; };
+		6D91091E24547FD300D043E7 /* IPAServerDefaultIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAServerDefaultIcon.h; sourceTree = "<group>"; };
 		6DB0DB5622A41E4700232E4A /* IPAServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IPAServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DB0DB5922A41E4700232E4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6DB0DB6022A41EBA00232E4A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -176,6 +177,7 @@
 				6D0F6B9723953CE300822132 /* IPAServerManifestManager.m */,
 				6DCAF24523940CE4000FCCB5 /* IPAServerUtils.h */,
 				6DCAF24623940CE4000FCCB5 /* IPAServerUtils.m */,
+				6D91091E24547FD300D043E7 /* IPAServerDefaultIcon.h */,
 			);
 			path = IPAServer;
 			sourceTree = "<group>";
