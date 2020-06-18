@@ -33,7 +33,7 @@
                 metadata[@"bundle-identifier"] = self.bundleIdentifier;
                 metadata[@"bundle-version"] = self.bundleVersion;
                 metadata[@"kind"] = @"software";
-                metadata[@"title"] = self.title;
+                metadata[@"title"] = self.title ?: @"App";
                 metadata;
             });
             item;
