@@ -13,6 +13,7 @@ target 'IPAServer' do
   pod 'CommandLine'
   pod 'MUFoundation/MUPath'
   pod 'GCDWebServer'
+  pod 'CocoaHTTPServer'
   pod 'libextobjc'
   pod 'AFNetworking'
   pod 'SSZipArchive'

@@ -10,6 +10,7 @@
 #import <MUFoundation/MUPath.h>
 #import "IPAServerConfiguration.h"
 #import "IPAServerPackage.h"
+#import "IPAServerManifest.h"
 
 /*
  - /
@@ -39,5 +40,9 @@
 - (void)stop;
 
 - (NSString *)downloadURLWithPackage:(IPAServerPackage *)package;
+
+- (IPAServerPackage *)packageForKey:(NSString *)key;
+
+- (IPAServerManifest *)manifestWithPackage:(IPAServerPackage *)package;
 
 @end

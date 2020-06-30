@@ -11,6 +11,8 @@
 #import <GCDWebServer/GCDWebServerDataRequest.h>
 #import <GCDWebServer/GCDWebServerResponse.h>
 #import <GCDWebServer/GCDWebServerFileResponse.h>
+#import <CocoaHTTPServer/HTTPServer.h>
+#import "IPAConnection.h"
 
 #import <SSZipArchive/SSZipArchive.h>
 #import <AFNetworking/AFNetworking.h>
@@ -23,6 +25,7 @@
 
 
 @property (nonatomic, strong, readonly) GCDWebServer *webServer;
+@property (nonatomic, strong, readonly) HTTPServer *httpServer;
 
 @property (nonatomic, strong, readonly) NSOperationQueue *importQueue;
 @property (nonatomic, strong, readonly) NSMutableDictionary *importedPackages;
@@ -33,7 +36,8 @@
 @property (nonatomic, strong, readonly) MUPath *rootDirectory;
 @property (nonatomic, strong, readonly) MUPath *packagesDirectory;
 
-@property (nonatomic, strong, readonly) NSString *baseURL;
+@property (nonatomic, strong, readonly) NSString *cdnBaseURL;
+@property (nonatomic, strong, readonly) NSString *tlsBaseURL;
 
 @end
 
@@ -87,12 +91,18 @@
                           @strongify(self);
                           @try {
                               NSString *target = request.query[@"target"];
-                              [self.manifestManager getDownloadURLForKey:target completed:^(NSString *url) {
-                                  url = [NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@", url];
-                                  GCDWebServerResponse *response = [GCDWebServerResponse responseWithRedirect:[NSURL URLWithString:url]
-                                                                                                    permanent:YES];
-                                  completionBlock(response);
-                              }];
+                              NSString *str = [NSString stringWithFormat:@"%@/download/%@", self.tlsBaseURL, target];
+                              str = [@"itms-services://?action=download-manifest&url=" stringByAppendingString:str];
+                              GCDWebServerResponse *response = [GCDWebServerResponse responseWithRedirect:[NSURL URLWithString:str]
+                                                                                                permanent:YES];
+                              completionBlock(response);
+                              
+//                              [self.manifestManager getDownloadURLForKey:target completed:^(NSString *url) {
+//                                  url = [NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@", url];
+//                                  GCDWebServerResponse *response = [GCDWebServerResponse responseWithRedirect:[NSURL URLWithString:url]
+//                                                                                                    permanent:YES];
+//                                  completionBlock(response);
+//                              }];
                           } @catch (NSException *exception) {
                               completionBlock([GCDWebServerResponse responseWithStatusCode:404]);
                           } @finally {}
@@ -210,10 +220,24 @@
 }
 
 - (BOOL)start {
+    return [self _startWebServer] && [self _startHTTPServer];
+}
+
+- (BOOL)_startWebServer {
     NSMutableDictionary *options = [NSMutableDictionary dictionary];
     options[GCDWebServerOption_Port] = @(_configuration.port);
     NSError *error = nil;
     [self.webServer startWithOptions:options error:&error];
+    if (error) {
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)_startHTTPServer {
+    NSError *error = nil;
+    self.httpServer.port = _configuration.port + 1;
+    [self.httpServer start:&error];
     if (error) {
         return NO;
     }
@@ -225,12 +249,16 @@
 }
 
 - (NSString *)downloadURLWithPackage:(IPAServerPackage *)package {
-    return [NSString stringWithFormat:@"%@/download?target=%@", self.baseURL, package.MD5];
+    return [NSString stringWithFormat:@"%@/download?target=%@", self.cdnBaseURL, package.MD5];
+}
+
+- (IPAServerPackage *)packageForKey:(NSString *)key {
+    return self.importedPackages[key];
 }
 
 - (IPAServerManifest *)manifestWithPackage:(IPAServerPackage *)package {
     IPAServerManifest *manifest = [[IPAServerManifest alloc] init];
-    NSString *baseURL = self.baseURL;
+    NSString *baseURL = self.cdnBaseURL;
     
     NSString *icon = [NSString stringWithFormat:@"%@/icon?target=%@", baseURL, package.MD5];
     manifest.fullSizeImage = icon;
@@ -252,6 +280,19 @@
     return _webServer;
 }
 
+@synthesize httpServer = _httpServer;
+- (HTTPServer *)httpServer {
+    if (!_httpServer) {
+        _httpServer = [[HTTPServer alloc] init];
+        _httpServer.connectionClass = [IPAConnection class];
+        _httpServer.documentRoot = self.rootDirectory.string;
+//        _httpServer.type = @"_http._tcp";
+//        [_httpServer setName:@""];
+        _httpServer.mainServer = self;
+    }
+    return _httpServer;
+}
+
 @synthesize sessionManager = _sessionManager;
 - (AFHTTPSessionManager *)sessionManager {
     if (!_sessionManager) {
@@ -269,8 +310,15 @@
     return _manifestManager;
 }
 
-- (NSString *)baseURL {
+- (NSString *)cdnBaseURL {
     return [NSString stringWithFormat:@"http://%@:%@", [IPAServerUtils LANAddress], @(self.webServer.port)];
+}
+
+- (NSString *)tlsBaseURL {
+    NSString *url = [NSString stringWithFormat:@"https://%@:%@", [IPAServerUtils LANAddress], @(self.httpServer.listeningPort)];
+//    NSString *url = [NSString stringWithFormat:@"https://%@.local:%@", @"wushuangdeMacBook", @(self.httpServer.netService.port)];
+//    NSString *url = [NSString stringWithFormat:@"https://%@.local:%@", self.httpServer.netService.name, @(self.httpServer.netService.port)];
+    return url;
 }
 
 @end

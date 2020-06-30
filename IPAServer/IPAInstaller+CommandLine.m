@@ -49,6 +49,7 @@
                    key:MD5
                success:^(IPAServerPackage *package) {
                    NSString *url = [server downloadURLWithPackage:package];
+            CLInfo(@"URL: %@", url);
                    QRCode *code = [QRCode codeWithString:url version:0 level:QRCodeLevelL mode:QRCodeMode8BitData];
                    [code print];
                } failure:^(NSError *error) {

@@ -12,6 +12,13 @@ PODS:
   - AFNetworking/Reachability (3.2.1)
   - AFNetworking/Security (3.2.1)
   - AFNetworking/Serialization (3.2.1)
+  - CocoaAsyncSocket (7.6.4)
+  - CocoaHTTPServer (2.3):
+    - CocoaAsyncSocket
+    - CocoaLumberjack
+  - CocoaLumberjack (3.6.1):
+    - CocoaLumberjack/Core (= 3.6.1)
+  - CocoaLumberjack/Core (3.6.1)
   - CommandLine (2.4.7):
     - CommandLine/ANSI (= 2.4.7)
     - CommandLine/Command (= 2.4.7)
@@ -76,6 +83,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - CocoaHTTPServer
   - CommandLine
   - GCDWebServer
   - libextobjc
@@ -84,6 +92,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - CocoaAsyncSocket
+    - CocoaHTTPServer
+    - CocoaLumberjack
     - GCDWebServer
     - MUFoundation
   trunk:
@@ -94,12 +105,15 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
+  CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530
+  CocoaLumberjack: b17ae15142558d08bbacf69775fa10c4abbebcc9
   CommandLine: 6f3fa6faf8c9efb2b2db790c9872f92195831589
   GCDWebServer: ead88cd14596dd4eae4f5830b8877c87c8728990
   libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
   MUFoundation: 7ba494a348139d1a355a3f20b5ba3de11720c9d4
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
 
-PODFILE CHECKSUM: a6a49537b68a7cd651bffa1b16dba8526be94b58
+PODFILE CHECKSUM: 226b97c1777f497d889d7c9ff19c0bea7a71472f
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3

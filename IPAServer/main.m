@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "IPAInstaller.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        [DDLog addLogger:[DDOSLogger sharedInstance]];
         [GCDWebServer setLogLevel:5];
         CLMainExplain = @"IPA Wireless Installer";
         CLCommand.mainCommand.version = @"1.1.0";
