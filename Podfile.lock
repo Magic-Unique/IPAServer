@@ -92,15 +92,14 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
     - CocoaAsyncSocket
     - CocoaHTTPServer
     - CocoaLumberjack
-    - GCDWebServer
-    - MUFoundation
-  trunk:
-    - AFNetworking
     - CommandLine
+    - GCDWebServer
     - libextobjc
+    - MUFoundation
     - SSZipArchive
 
 SPEC CHECKSUMS:
@@ -116,4 +115,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 226b97c1777f497d889d7c9ff19c0bea7a71472f
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.8.4
