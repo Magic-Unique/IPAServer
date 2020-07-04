@@ -11,6 +11,7 @@
 #import "IPAServer.h"
 #import "DDKeychain.h"
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
+#import <CFNetwork/CFSocketStream.h>
 
 @interface HTTPConnection (Private)
 - (void)startReadingRequest;
@@ -99,6 +100,25 @@
 
 - (NSNetService *)netService {
     return netService;
+}
+
+@end
+
+@implementation GCDAsyncSocket (IPAServer)
+
++ (void)load {
+    Method ori = class_getInstanceMethod(self, @selector(startTLS:));
+    Method new = class_getInstanceMethod(self, @selector(ipaserver_startTLS:));
+    method_exchangeImplementations(ori, new);
+}
+
+- (void)ipaserver_startTLS:(NSDictionary *)tlsSettings {
+    if (tlsSettings[(__bridge NSString *)kCFStreamSSLLevel]) {
+        NSMutableDictionary *newSettings = [tlsSettings mutableCopy];
+        [newSettings removeObjectForKey:(__bridge NSString *)kCFStreamSSLLevel];
+        tlsSettings = newSettings;
+    }
+    [self ipaserver_startTLS:tlsSettings];
 }
 
 @end
