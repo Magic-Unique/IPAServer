@@ -61,7 +61,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/wushuang/Desktop/temp/App.signed.ipa"
+            argument = "/Users/wushuang/Desktop/&#x6b6a;&#x70b9;&#x70b9;\ 3.4.4.signed.ipa"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "ssl"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
@@ -70,7 +74,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/shuang/Desktop/raidlegends.signed.ipa"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>

@@ -20,6 +20,7 @@
 #import "IPAServerManifestManager.h"
 
 #import "IPAServerUtils.h"
+#import "IPASecurity.h"
 
 @interface IPAServer ()
 
@@ -83,70 +84,101 @@
 }
 
 - (void)__initHTTPHandlers {
+    IPAServerType serverType = _configuration.serverType;
     @weakify(self)
     [self.webServer addHandlerForMethod:@"GET"
-                                   path:@"/download"
+                                   path:@"/CA.cer"
                            requestClass:[GCDWebServerRequest class]
                       asyncProcessBlock:^(GCDWebServerRequest *request, GCDWebServerCompletionBlock completionBlock) {
-                          @strongify(self);
-                          @try {
-                              NSString *target = request.query[@"target"];
-                              NSString *str = [NSString stringWithFormat:@"%@/download/%@", self.tlsBaseURL, target];
-                              str = [@"itms-services://?action=download-manifest&url=" stringByAppendingString:str];
-                              GCDWebServerResponse *response = [GCDWebServerResponse responseWithRedirect:[NSURL URLWithString:str]
-                                                                                                permanent:YES];
-                              completionBlock(response);
-                              
-//                              [self.manifestManager getDownloadURLForKey:target completed:^(NSString *url) {
-//                                  url = [NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@", url];
-//                                  GCDWebServerResponse *response = [GCDWebServerResponse responseWithRedirect:[NSURL URLWithString:url]
-//                                                                                                    permanent:YES];
-//                                  completionBlock(response);
-//                              }];
-                          } @catch (NSException *exception) {
-                              completionBlock([GCDWebServerResponse responseWithStatusCode:404]);
-                          } @finally {}
-                      }];
+        @try {
+            MUPath *path = [IPASecurity rootCerPath];
+            GCDWebServerFileResponse *response = [GCDWebServerFileResponse responseWithFile:path.string];
+            completionBlock(response);
+        } @catch (NSException *exception) {
+            completionBlock([GCDWebServerResponse responseWithStatusCode:404]);
+        } @finally {}
+    }];
+    if (serverType == IPAServerTypeLocal) {
+        [self.webServer addHandlerForMethod:@"GET"
+                                       path:@"/download"
+                               requestClass:[GCDWebServerRequest class]
+                          asyncProcessBlock:^(GCDWebServerRequest *request, GCDWebServerCompletionBlock completionBlock) {
+            @strongify(self);
+            @try {
+                NSString *target = request.query[@"target"];
+                
+                NSString *url = [NSString stringWithFormat:@"%@/download/%@", self.tlsBaseURL, target];
+                url = [@"itms-services://?action=download-manifest&url=" stringByAppendingString:url];
+                GCDWebServerResponse *response = [GCDWebServerResponse responseWithRedirect:[NSURL URLWithString:url]
+                                                                                  permanent:YES];
+                completionBlock(response);
+            } @catch (NSException *exception) {
+                completionBlock([GCDWebServerResponse responseWithStatusCode:404]);
+            } @finally {}
+        }];
+    } else {
+        [self.webServer addHandlerForMethod:@"GET"
+                                       path:@"/download"
+                               requestClass:[GCDWebServerRequest class]
+                          asyncProcessBlock:^(GCDWebServerRequest *request, GCDWebServerCompletionBlock completionBlock) {
+            @strongify(self);
+            @try {
+                NSString *target = request.query[@"target"];
+                [self.manifestManager getDownloadURLForKey:target completed:^(NSString *url) {
+                    if (url) {
+                        NSString *_manifest = [@"itms-services://?action=download-manifest&url=" stringByAppendingString:url];
+                        GCDWebServerResponse *response = [GCDWebServerResponse responseWithRedirect:[NSURL URLWithString:_manifest]
+                                                                                          permanent:YES];
+                        completionBlock(response);
+                    } else {
+                        completionBlock([GCDWebServerResponse responseWithStatusCode:404]);
+                    }
+                }];
+            } @catch (NSException *exception) {
+                completionBlock([GCDWebServerResponse responseWithStatusCode:404]);
+            } @finally {}
+        }];
+    }
     [self.webServer addHandlerForMethod:@"GET"
                                    path:@"/icon"
                            requestClass:[GCDWebServerRequest class]
                       asyncProcessBlock:^(GCDWebServerRequest *request, GCDWebServerCompletionBlock completionBlock) {
-                          @strongify(self);
-                          @try {
-                              NSString *target = request.query[@"target"];
-                              IPAServerPackage *package = self.importedPackages[target];
-                              MUPath *path = package.rootDirectory;
-                              path = [path subpathWithComponent:@"icon.png"];
-                              if (!path.isFile) {
-                                  [IPAServerUtils saveDefaultIcon:path];
-                              }
-                              GCDWebServerFileResponse *response = [GCDWebServerFileResponse responseWithFile:path.string];
-                              completionBlock(response);
-                          } @catch (NSException *exception) {
-                              completionBlock([GCDWebServerResponse responseWithStatusCode:404]);
-                          } @finally {}
-                      }];
+        @strongify(self);
+        @try {
+            NSString *target = request.query[@"target"];
+            IPAServerPackage *package = self.importedPackages[target];
+            MUPath *path = package.rootDirectory;
+            path = [path subpathWithComponent:@"icon.png"];
+            if (!path.isFile) {
+                [IPAServerUtils saveDefaultIcon:path];
+            }
+            GCDWebServerFileResponse *response = [GCDWebServerFileResponse responseWithFile:path.string];
+            completionBlock(response);
+        } @catch (NSException *exception) {
+            completionBlock([GCDWebServerResponse responseWithStatusCode:404]);
+        } @finally {}
+    }];
     [self.webServer addHandlerForMethod:@"GET"
                                    path:@"/package"
                            requestClass:[GCDWebServerRequest class]
                       asyncProcessBlock:^(GCDWebServerRequest *request, GCDWebServerCompletionBlock completionBlock) {
-                          @strongify(self);
-                          @try {
-                              NSString *target = request.query[@"target"];
-                              IPAServerPackage *package = self.importedPackages[target];
-                              MUPath *path = package.rootDirectory;
-                              path = [path subpathWithComponent:@"package.ipa"];
-                              if (path.isFile) {
-                                  GCDWebServerFileResponse *response = [GCDWebServerFileResponse responseWithFile:path.string];
-                                  completionBlock(response);
-                              } else {
-                                  GCDWebServerResponse *response = [GCDWebServerResponse responseWithStatusCode:404];
-                                  completionBlock(response);
-                              }
-                          } @catch (NSException *exception) {
-                              completionBlock([GCDWebServerResponse responseWithStatusCode:404]);
-                          } @finally {}
-                      }];
+        @strongify(self);
+        @try {
+            NSString *target = request.query[@"target"];
+            IPAServerPackage *package = self.importedPackages[target];
+            MUPath *path = package.rootDirectory;
+            path = [path subpathWithComponent:@"package.ipa"];
+            if (path.isFile) {
+                GCDWebServerFileResponse *response = [GCDWebServerFileResponse responseWithFile:path.string];
+                completionBlock(response);
+            } else {
+                GCDWebServerResponse *response = [GCDWebServerResponse responseWithStatusCode:404];
+                completionBlock(response);
+            }
+        } @catch (NSException *exception) {
+            completionBlock([GCDWebServerResponse responseWithStatusCode:404]);
+        } @finally {}
+    }];
 }
 
 - (void)import:(MUPath *)ipaPath
@@ -252,6 +284,10 @@
     return [NSString stringWithFormat:@"%@/download?target=%@", self.cdnBaseURL, package.MD5];
 }
 
+- (NSString *)rootCerURL {
+    return [self.cdnBaseURL stringByAppendingFormat:@"/CA.cer"];
+}
+
 - (IPAServerPackage *)packageForKey:(NSString *)key {
     return self.importedPackages[key];
 }
@@ -286,8 +322,6 @@
         _httpServer = [[HTTPServer alloc] init];
         _httpServer.connectionClass = [IPAConnection class];
         _httpServer.documentRoot = self.rootDirectory.string;
-//        _httpServer.type = @"_http._tcp";
-//        [_httpServer setName:@""];
         _httpServer.mainServer = self;
     }
     return _httpServer;
@@ -316,8 +350,6 @@
 
 - (NSString *)tlsBaseURL {
     NSString *url = [NSString stringWithFormat:@"https://%@:%@", [IPAServerUtils LANAddress], @(self.httpServer.listeningPort)];
-//    NSString *url = [NSString stringWithFormat:@"https://%@.local:%@", @"wushuangdeMacBook", @(self.httpServer.netService.port)];
-//    NSString *url = [NSString stringWithFormat:@"https://%@.local:%@", self.httpServer.netService.name, @(self.httpServer.netService.port)];
     return url;
 }
 

@@ -41,6 +41,8 @@
 
 - (NSString *)downloadURLWithPackage:(IPAServerPackage *)package;
 
+- (NSString *)rootCerURL;
+
 - (IPAServerPackage *)packageForKey:(NSString *)key;
 
 - (IPAServerManifest *)manifestWithPackage:(IPAServerPackage *)package;

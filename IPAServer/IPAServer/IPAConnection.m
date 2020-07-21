@@ -9,13 +9,10 @@
 #import "IPAConnection.h"
 #import <objc/runtime.h>
 #import "IPAServer.h"
-#import "DDKeychain.h"
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
 #import <CFNetwork/CFSocketStream.h>
-
-@interface HTTPConnection (Private)
-- (void)startReadingRequest;
-@end
+#import "IPASecurity.h"
+#import "IPAServerUtils.h"
 
 @implementation IPAConnection
 
@@ -24,47 +21,12 @@
 }
 
 - (NSArray *)sslIdentityAndCertificates {
-    NSArray *result = [DDKeychain SSLIdentityAndCertificates];
-    if ([result count] == 0) {
-        [DDKeychain createNewIdentity];
-        return [DDKeychain SSLIdentityAndCertificates];
+    SecIdentityRef identity = [IPASecurity identityForCN:[IPAServerUtils LANAddress]];
+    if (identity) {
+        return @[(__bridge_transfer id)identity];
     }
-    return result;
+    return nil;
 }
-
-//- (void)startConnection
-//{
-//    if ([self isSecureServer])
-//    {
-//        // We are configured to be an HTTPS server.
-//        // That is, we secure via SSL/TLS the connection prior to any communication.
-//        
-//        NSArray *certificates = [self sslIdentityAndCertificates];
-//        
-//        if ([certificates count] > 0)
-//        {
-//            // All connections are assumed to be secure. Only secure connections are allowed on this server.
-//            NSMutableDictionary *settings = [NSMutableDictionary dictionaryWithCapacity:3];
-//            
-//            // Configure this connection as the server
-//            [settings setObject:[NSNumber numberWithBool:YES]
-//                         forKey:(NSString *)kCFStreamSSLIsServer];
-//            
-//            [settings setObject:certificates
-//                         forKey:(NSString *)kCFStreamSSLCertificates];
-//            
-//            // Configure this connection to use the highest possible SSL level
-//            [settings setObject:(NSString *)kCFStreamSocketSecurityLevelNegotiatedSSL
-//                         forKey:(NSString *)GCDAsyncSocketSSLProtocolVersionMin];
-//            [settings setObject:(NSString *)kCFStreamSocketSecurityLevelNegotiatedSSL
-//                         forKey:(NSString *)GCDAsyncSocketSSLProtocolVersionMax];
-//            
-//            [asyncSocket startTLS:settings];
-//        }
-//    }
-//    
-//    [self startReadingRequest];
-//}
 
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path {
     NSURL *url = request.url;
@@ -119,6 +81,14 @@
         tlsSettings = newSettings;
     }
     [self ipaserver_startTLS:tlsSettings];
+}
+
+@end
+
+@implementation HTTPDataResponse (IPAServer)
+
+- (NSDictionary *)httpHeaders {
+    return @{@"Content-Type":@"application/x-plist"};
 }
 
 @end

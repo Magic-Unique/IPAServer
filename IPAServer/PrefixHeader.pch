@@ -21,4 +21,6 @@
 #import <GCDWebServer/GCDWebServerDataResponse.h>
 #import <AFNetworking/AFNetworking.h>
 
+#import "IPALanguage.h"
+
 #endif /* PrefixHeader_pch */

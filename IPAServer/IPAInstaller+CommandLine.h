@@ -2,7 +2,7 @@
 //  IPAInstaller+CommandLine.h
 //  IPAServer
 //
-//  Created by 吴双 on 2019/12/4.
+//  Created by 冷秋 on 2019/12/4.
 //  Copyright © 2019 Magic-Unique. All rights reserved.
 //
 

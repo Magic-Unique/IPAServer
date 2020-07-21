@@ -23,6 +23,7 @@
     IPAServerConfiguration *configuration = [[[self class] allocWithZone:zone] init];
     configuration.rootDirectory = self.rootDirectory;
     configuration.port = self.port;
+    configuration.serverType = self.serverType;
     configuration.manifestUploadPolicy = self.manifestUploadPolicy;
     return configuration;
 }

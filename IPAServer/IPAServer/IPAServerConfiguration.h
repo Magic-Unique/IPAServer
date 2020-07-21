@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <MUFoundation/MUPath.h>
 
+typedef NS_ENUM(NSUInteger, IPAServerType) {
+    IPAServerTypeLocal,
+    IPAServerTypeFileIO,
+};
+
 typedef NS_ENUM(NSUInteger, IPAManifestUploadingPolicy) {
     IPAManifestUploadingPolicyUploadWhenInstall,
     IPAManifestUploadingPolicyPreuploadBeforeInstall,
@@ -19,6 +24,8 @@ typedef NS_ENUM(NSUInteger, IPAManifestUploadingPolicy) {
 @property (nonatomic, strong) MUPath *rootDirectory;
 
 @property (nonatomic, assign) NSUInteger port;
+
+@property (nonatomic, assign) IPAServerType serverType;
 
 @property (nonatomic, assign) IPAManifestUploadingPolicy manifestUploadPolicy;
 

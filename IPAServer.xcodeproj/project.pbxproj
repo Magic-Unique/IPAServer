@@ -11,6 +11,8 @@
 		6D0F6B95239535FC00822132 /* IPAServerManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0F6B94239535FC00822132 /* IPAServerManifest.m */; };
 		6D0F6B9823953CE300822132 /* IPAServerManifestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0F6B9723953CE300822132 /* IPAServerManifestManager.m */; };
 		6D49F8F3239743E8002B1784 /* IPAInstaller+CommandLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D49F8F2239743E8002B1784 /* IPAInstaller+CommandLine.m */; };
+		6D9B128824B46E4400757C10 /* IPASecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B128724B46E4400757C10 /* IPASecurity.m */; };
+		6DA135C224C1A635005FB6C6 /* IPALanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA135C124C1A635005FB6C6 /* IPALanguage.m */; };
 		6DB0DB5A22A41E4700232E4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0DB5922A41E4700232E4A /* main.m */; };
 		6DB4BEC923901B5300BD1CF2 /* IPAServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB4BEC823901B5300BD1CF2 /* IPAServer.m */; };
 		6DCAF24123940382000FCCB5 /* IPAServerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCAF24023940382000FCCB5 /* IPAServerConfiguration.m */; };
@@ -42,7 +44,6 @@
 		6DE4859D22A5653500491BA5 /* QRCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DE4859B22A5653500491BA5 /* QRCode.h */; };
 		6DE4859E22A5653500491BA5 /* QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4859C22A5653500491BA5 /* QRCode.m */; };
 		7E03038824A04A6A0035E50F /* IPAConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E03038724A04A6A0035E50F /* IPAConnection.m */; };
-		7E03038B24A055760035E50F /* DDKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E03038A24A055760035E50F /* DDKeychain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +68,10 @@
 		6D49F8F1239743E8002B1784 /* IPAInstaller+CommandLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IPAInstaller+CommandLine.h"; sourceTree = "<group>"; };
 		6D49F8F2239743E8002B1784 /* IPAInstaller+CommandLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IPAInstaller+CommandLine.m"; sourceTree = "<group>"; };
 		6D91091E24547FD300D043E7 /* IPAServerDefaultIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAServerDefaultIcon.h; sourceTree = "<group>"; };
+		6D9B128624B46E4400757C10 /* IPASecurity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPASecurity.h; sourceTree = "<group>"; };
+		6D9B128724B46E4400757C10 /* IPASecurity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPASecurity.m; sourceTree = "<group>"; };
+		6DA135C024C1A635005FB6C6 /* IPALanguage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPALanguage.h; sourceTree = "<group>"; };
+		6DA135C124C1A635005FB6C6 /* IPALanguage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPALanguage.m; sourceTree = "<group>"; };
 		6DB0DB5622A41E4700232E4A /* IPAServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IPAServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DB0DB5922A41E4700232E4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6DB0DB6022A41EBA00232E4A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -107,8 +112,6 @@
 		6DE4859C22A5653500491BA5 /* QRCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRCode.m; sourceTree = "<group>"; };
 		7E03038624A04A6A0035E50F /* IPAConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAConnection.h; sourceTree = "<group>"; };
 		7E03038724A04A6A0035E50F /* IPAConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAConnection.m; sourceTree = "<group>"; };
-		7E03038924A055760035E50F /* DDKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDKeychain.h; sourceTree = "<group>"; };
-		7E03038A24A055760035E50F /* DDKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDKeychain.m; sourceTree = "<group>"; };
 		FAD9793FF69480E3834B9ADE /* Pods-IPAServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IPAServer.release.xcconfig"; path = "Target Support Files/Pods-IPAServer/Pods-IPAServer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +166,8 @@
 				6DCF98212386E9D300B5AB22 /* IPAInstaller.m */,
 				6D49F8F1239743E8002B1784 /* IPAInstaller+CommandLine.h */,
 				6D49F8F2239743E8002B1784 /* IPAInstaller+CommandLine.m */,
+				6DA135C024C1A635005FB6C6 /* IPALanguage.h */,
+				6DA135C124C1A635005FB6C6 /* IPALanguage.m */,
 				6DB0DB6022A41EBA00232E4A /* PrefixHeader.pch */,
 			);
 			path = IPAServer;
@@ -171,8 +176,8 @@
 		6DCAF23E23940362000FCCB5 /* IPAServer */ = {
 			isa = PBXGroup;
 			children = (
-				7E03038924A055760035E50F /* DDKeychain.h */,
-				7E03038A24A055760035E50F /* DDKeychain.m */,
+				6D9B128624B46E4400757C10 /* IPASecurity.h */,
+				6D9B128724B46E4400757C10 /* IPASecurity.m */,
 				6DB4BEC723901B5300BD1CF2 /* IPAServer.h */,
 				6DB4BEC823901B5300BD1CF2 /* IPAServer.m */,
 				7E03038624A04A6A0035E50F /* IPAConnection.h */,
@@ -389,7 +394,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DA135C224C1A635005FB6C6 /* IPALanguage.m in Sources */,
 				6DCF98222386E9D300B5AB22 /* IPAInstaller.m in Sources */,
+				6D9B128824B46E4400757C10 /* IPASecurity.m in Sources */,
 				6D0F6B95239535FC00822132 /* IPAServerManifest.m in Sources */,
 				6DCAF2442394039B000FCCB5 /* IPAServerPackage.m in Sources */,
 				6DCAF24723940CE4000FCCB5 /* IPAServerUtils.m in Sources */,
@@ -400,7 +407,6 @@
 				6DCAF24123940382000FCCB5 /* IPAServerConfiguration.m in Sources */,
 				6DCF981C2386D81500B5AB22 /* QRCode+IPAServer.m in Sources */,
 				7E03038824A04A6A0035E50F /* IPAConnection.m in Sources */,
-				7E03038B24A055760035E50F /* DDKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
