@@ -20,6 +20,10 @@
 
 @property (nonatomic, strong, readonly) MUPath *rootDirectory;
 
+@property (nonatomic, strong, readonly) MUPath *packagePath;
+
+@property (nonatomic, strong, readonly) MUPath *iconPath;
+
 - (instancetype)initWithRootDirectory:(MUPath *)path;
 
 @end

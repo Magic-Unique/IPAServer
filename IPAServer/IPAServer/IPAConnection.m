@@ -14,6 +14,33 @@
 #import "IPASecurity.h"
 #import "IPAServerUtils.h"
 
+#define ipa_response(cls, super) interface cls : super @end @implementation cls
+#define ipa_end end
+
+@ipa_response(IPAManifestResponse, HTTPDataResponse)
+
+- (NSDictionary *)httpHeaders {
+    return @{@"Content-Type": @"application/x-plist"};
+}
+
+@ipa_end
+
+@ipa_response(IPAPackageResponse, HTTPDataResponse)
+
+- (NSDictionary *)httpHeaders {
+    return @{@"Content-Type": @"application/vnd.iphone"};
+}
+
+@ipa_end
+
+@ipa_response(IPAImageResponse, HTTPDataResponse)
+
+- (NSDictionary *)httpHeaders {
+    return @{@"Content-Type": @"image/png"};
+}
+
+@ipa_end
+
 @implementation IPAConnection
 
 - (BOOL)isSecureServer {
@@ -38,7 +65,34 @@
         if (package) {
             IPAServerManifest *manifest = [server manifestWithPackage:package];
             NSData *data = [manifest propertyListDataWithXMLFormat];
-            return [[HTTPDataResponse alloc] initWithData:data];
+            return [[IPAManifestResponse alloc] initWithData:data];
+        }
+    }
+    else if ([component.path hasPrefix:@"/icon"]) {
+        NSString *key = component.path.lastPathComponent;
+        IPAServer *server = [self __mainServer];
+        IPAServerPackage *package = [server packageForKey:key];
+        if (package) {
+            MUPath *iconPath = package.iconPath;
+            if (!iconPath.isFile) {
+                [IPAServerUtils saveDefaultIcon:iconPath];
+            }
+            NSData *data = [NSData dataWithContentsOfFile:iconPath.string];
+            IPAImageResponse *response = [[IPAImageResponse alloc] initWithData:data];
+            return response;
+        }
+    }
+    else if ([component.path hasPrefix:@"/package"]) {
+        NSString *key = component.path.lastPathComponent;
+        IPAServer *server = [self __mainServer];
+        IPAServerPackage *package = [server packageForKey:key];
+        if (package) {
+            MUPath *packagePath = package.packagePath;
+            if (packagePath.isFile) {
+                NSData *data = [NSData dataWithContentsOfFile:packagePath.string];
+                IPAPackageResponse *response = [[IPAPackageResponse alloc] initWithData:data];
+                return response;
+            }
         }
     }
     return [super httpResponseForMethod:method URI:path];
@@ -81,14 +135,6 @@
         tlsSettings = newSettings;
     }
     [self ipaserver_startTLS:tlsSettings];
-}
-
-@end
-
-@implementation HTTPDataResponse (IPAServer)
-
-- (NSDictionary *)httpHeaders {
-    return @{@"Content-Type":@"application/x-plist"};
 }
 
 @end

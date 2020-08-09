@@ -23,4 +23,12 @@
     return self;
 }
 
+- (MUPath *)packagePath {
+    return [self.rootDirectory subpathWithComponent:@"package.ipa"];
+}
+
+- (MUPath *)iconPath {
+    return [self.rootDirectory subpathWithComponent:@"icon.png"];
+}
+
 @end

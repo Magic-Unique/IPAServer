@@ -237,8 +237,6 @@
             
             package = [[IPAServerPackage alloc] initWithRootDirectory:packageDirectory];
             self.importedPackages[key] = package;
-            IPAServerManifest *manifest = [self manifestWithPackage:package];
-            [self.manifestManager setManifest:manifest forKey:key];
         } while (NO);
         
         [tempPath remove];
@@ -294,13 +292,15 @@
 
 - (IPAServerManifest *)manifestWithPackage:(IPAServerPackage *)package {
     IPAServerManifest *manifest = [[IPAServerManifest alloc] init];
-    NSString *baseURL = self.cdnBaseURL;
+    NSString *baseURL = self.tlsBaseURL;
+    NSString *identifier = package.MD5;
     
-    NSString *icon = [NSString stringWithFormat:@"%@/icon?target=%@", baseURL, package.MD5];
+    NSString *software = [baseURL stringByAppendingFormat:@"/package/%@", identifier];
+    NSString *icon = [baseURL stringByAppendingFormat:@"/icon/%@", identifier];
+    
     manifest.fullSizeImage = icon;
     manifest.displayImage = icon;
-    manifest.softwarePackage = [NSString stringWithFormat:@"%@/package?target=%@", baseURL, package.MD5];
-    
+    manifest.softwarePackage = software;
     manifest.bundleIdentifier = package.bundleIdentifier;
     manifest.bundleVersion = package.bundleVersion;
     manifest.title = package.displayName;
