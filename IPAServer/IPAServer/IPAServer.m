@@ -61,7 +61,7 @@
 
 - (void)__initWorkspace {
     _rootDirectory = _configuration.rootDirectory;
-    [_rootDirectory createDirectoryWithCleanContents:YES];
+    [_rootDirectory createDirectoryWithCleanContents:NO];
     
     _packagesDirectory = [_rootDirectory subpathWithComponent:@"packages"];
     [_packagesDirectory createDirectoryWithCleanContents:NO];

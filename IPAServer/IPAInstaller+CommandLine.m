@@ -29,8 +29,8 @@
             return 1;
         }
         
-        MUPath *rootDirectory = [[MUPath tempPath] subpathWithComponent:[NSUUID UUID].UUIDString];
-        [rootDirectory createDirectoryWithCleanContents:YES];
+        MUPath *rootDirectory = [[MUPath homePath] subpathWithComponent:@".IPAServer"];
+        [rootDirectory createDirectoryWithCleanContents:NO];
         
         BOOL local = ![process flag:@"remote"];
         CLInfo(IPALocalizedString("use_server", nil), local ? @"localhost" : @"file.io");
