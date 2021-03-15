@@ -77,8 +77,6 @@
             }
             IPAServerPackage *package = [[IPAServerPackage alloc] initWithRootDirectory:content];
             self.importedPackages[content.lastPathComponent] = package;
-            IPAServerManifest *manifest = [self manifestWithPackage:package];
-            [self.manifestManager setManifest:manifest forKey:package.MD5];
         }];
     }];
 }
@@ -237,6 +235,11 @@
             
             package = [[IPAServerPackage alloc] initWithRootDirectory:packageDirectory];
             self.importedPackages[key] = package;
+            
+            if (self.configuration.serverType == IPAServerTypeFileIO) {
+                IPAServerManifest *manifest = [self manifestWithPackage:package];
+                [self.manifestManager setManifest:manifest forKey:package.MD5];
+            }
         } while (NO);
         
         [tempPath remove];
