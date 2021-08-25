@@ -80,6 +80,7 @@ PODS:
   - libextobjc/UmbrellaHeader (0.6)
   - MUFoundation/MUPath (0.0.6)
   - SSZipArchive (2.2.2)
+  - zipzap (8.1.1)
 
 DEPENDENCIES:
   - AFNetworking
@@ -89,6 +90,7 @@ DEPENDENCIES:
   - libextobjc
   - MUFoundation/MUPath
   - SSZipArchive
+  - zipzap
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -101,6 +103,7 @@ SPEC REPOS:
     - libextobjc
     - MUFoundation
     - SSZipArchive
+    - zipzap
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -112,7 +115,8 @@ SPEC CHECKSUMS:
   libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
   MUFoundation: 7ba494a348139d1a355a3f20b5ba3de11720c9d4
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
+  zipzap: 940162d9c9c60472c2eab341385e4214da0fdf1c
 
-PODFILE CHECKSUM: 226b97c1777f497d889d7c9ff19c0bea7a71472f
+PODFILE CHECKSUM: efdad9e26b7b64f93da078296808896346c07ee7
 
 COCOAPODS: 1.8.4

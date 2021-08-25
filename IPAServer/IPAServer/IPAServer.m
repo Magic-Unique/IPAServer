@@ -14,7 +14,7 @@
 #import <CocoaHTTPServer/HTTPServer.h>
 #import "IPAConnection.h"
 
-#import <SSZipArchive/SSZipArchive.h>
+#import "IPAServerUnzip.h"
 #import <AFNetworking/AFNetworking.h>
 #import "IPAServerManifest.h"
 #import "IPAServerManifestManager.h"
@@ -191,11 +191,7 @@
         NSError *error = nil;
         IPAServerPackage *package = nil;
         
-        MUPath *tempPath = [self.rootDirectory subpathWithComponent:@".temp"];
-        [tempPath createDirectoryWithCleanContents:YES];
-        
         do {
-            
             MUPath *packageDirectory = [self.packagesDirectory subpathWithComponent:key];
             if (packageDirectory.isDirectory) {
                 package = self.importedPackages[key];
@@ -203,41 +199,15 @@
             }
             [packageDirectory createDirectoryWithCleanContents:YES];
             
-            CLInfo(@"Unzip %@", ipaPath.lastPathComponent);
-            BOOL unzip = [SSZipArchive unzipFileAtPath:ipaPath.string
-                                         toDestination:tempPath.string
-                                              delegate:nil];
-            if (!unzip) {
-                CLError(@"Unzip failed.");
+            IPAServerUnzip *unzip = [[IPAServerUnzip alloc] init];
+            unzip.ipaPath = ipaPath;
+            unzip.toDirectory = packageDirectory;
+            if (![unzip unzip]) {
+                [packageDirectory remove];
+                error = [NSError errorWithDomain:@"IPAServerDomain" code:1 userInfo:@{}];
                 break;
             }
-            
-            [ipaPath copyTo:[packageDirectory subpathWithComponent:@"package.ipa"] autoCover:YES];
-            
-            MUPath *app = ({
-                MUPath *app = nil;
-                MUPath *Payload = [tempPath subpathWithComponent:@"Payload"];
-                if (Payload.isDirectory) {
-                    app = [Payload contentsWithFilter:^BOOL(MUPath *content) {
-                        return content.isDirectory && [content isA:@"app"];
-                    }].firstObject;
-                }
-                app;
-            });
-            if (!app) {
-                CLError(@"Can not found app directory.");
-                break;
-            }
-            CLInfo(@"Found %@", app.lastPathComponent);
-            
-            
-            MUPath *InfoPlistPath = [app subpathWithComponent:@"Info.plist"];
-            [InfoPlistPath copyInto:packageDirectory autoCover:YES];
-            
-            MUPath *AppIconPath = [app subpathWithComponent:@"AppIcon60x60@2x.png"];
-            [AppIconPath copyTo:[packageDirectory subpathWithComponent:@"icon.png"] autoCover:YES];
-            
-            package = [[IPAServerPackage alloc] initWithRootDirectory:packageDirectory];
+            package = unzip.package;
             self.importedPackages[key] = package;
             
             if (self.configuration.serverType == IPAServerTypeFileIO) {
@@ -245,8 +215,6 @@
                 [self.manifestManager setManifest:manifest forKey:package.MD5];
             }
         } while (NO);
-        
-        [tempPath remove];
         
         if (error) {
             !failure?:failure(error);

@@ -17,5 +17,6 @@ target 'IPAServer' do
   pod 'libextobjc'
   pod 'AFNetworking'
   pod 'SSZipArchive'
+  pod 'zipzap'
 
 end
