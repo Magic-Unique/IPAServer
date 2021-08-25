@@ -16,6 +16,8 @@
 FOUNDATION_EXTERN NSString *IPASSLDirectory;
 FOUNDATION_EXTERN NSString *IPAPackagesDirectory;
 
+FOUNDATION_EXTERN NSString *IPATempPackageKey;
+
 @interface IPAServer : NSObject
 
 @property (nonatomic, copy, readonly) IPAServerConfiguration *configuration;

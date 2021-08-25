@@ -49,12 +49,9 @@
         } else {
             CLInfo(IPALocalizedString("start_succee", nil), port);
         }
-        CLInfo(IPALocalizedString("read_hash", nil));
-        NSString *MD5 = input.MD5;
-        CLInfo(@"Read MD5: %@", MD5);
         
         [server import:input
-                   key:MD5
+                   key:IPATempPackageKey
                success:^(IPAServerPackage *package) {
             NSString *url = [server downloadURLWithPackage:package];
             CLInfo(@"URL: %@", url);

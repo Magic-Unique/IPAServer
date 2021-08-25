@@ -193,9 +193,11 @@
         
         do {
             MUPath *packageDirectory = [self.packagesDirectory subpathWithComponent:key];
-            if (packageDirectory.isDirectory) {
-                package = self.importedPackages[key];
-                break;
+            if (![key isEqualToString:IPATempPackageKey]) {
+                if (packageDirectory.isDirectory) {
+                    package = self.importedPackages[key];
+                    break;
+                }
             }
             [packageDirectory createDirectoryWithCleanContents:YES];
             
@@ -332,3 +334,5 @@
 
 NSString *IPASSLDirectory = @"ssl";
 NSString *IPAPackagesDirectory = @"packages";
+
+NSString *IPATempPackageKey = @"__TEMP__";
