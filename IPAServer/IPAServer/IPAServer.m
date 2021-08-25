@@ -20,7 +20,6 @@
 #import "IPAServerManifestManager.h"
 
 #import "IPAServerUtils.h"
-#import "IPASecurity.h"
 
 @interface IPAServer ()
 
@@ -35,6 +34,7 @@
 @property (nonatomic, strong, readonly) AFHTTPSessionManager *sessionManager;
 
 @property (nonatomic, strong, readonly) MUPath *rootDirectory;
+@property (nonatomic, strong, readonly) MUPath *sslDirectory;
 @property (nonatomic, strong, readonly) MUPath *packagesDirectory;
 
 @property (nonatomic, strong, readonly) NSString *cdnBaseURL;
@@ -63,7 +63,10 @@
     _rootDirectory = _configuration.rootDirectory;
     [_rootDirectory createDirectoryWithCleanContents:NO];
     
-    _packagesDirectory = [_rootDirectory subpathWithComponent:@"packages"];
+    _sslDirectory = [_rootDirectory subpathWithComponent:IPASSLDirectory];
+    [_sslDirectory createDirectoryWithCleanContents:NO];
+    
+    _packagesDirectory = [_rootDirectory subpathWithComponent:IPAPackagesDirectory];
     [_packagesDirectory createDirectoryWithCleanContents:NO];
 }
 
@@ -88,8 +91,9 @@
                                    path:@"/CA.cer"
                            requestClass:[GCDWebServerRequest class]
                       asyncProcessBlock:^(GCDWebServerRequest *request, GCDWebServerCompletionBlock completionBlock) {
+        @strongify(self);
         @try {
-            MUPath *path = [IPASecurity rootCerPath];
+            MUPath *path = [self.security rootCerPath];
             GCDWebServerFileResponse *response = [GCDWebServerFileResponse responseWithFile:path.string];
             completionBlock(response);
         } @catch (NSException *exception) {
@@ -357,3 +361,6 @@
 }
 
 @end
+
+NSString *IPASSLDirectory = @"ssl";
+NSString *IPAPackagesDirectory = @"packages";

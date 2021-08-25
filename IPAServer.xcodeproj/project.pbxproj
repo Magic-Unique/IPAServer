@@ -176,23 +176,23 @@
 		6DCAF23E23940362000FCCB5 /* IPAServer */ = {
 			isa = PBXGroup;
 			children = (
+				7E03038624A04A6A0035E50F /* IPAConnection.h */,
+				7E03038724A04A6A0035E50F /* IPAConnection.m */,
 				6D9B128624B46E4400757C10 /* IPASecurity.h */,
 				6D9B128724B46E4400757C10 /* IPASecurity.m */,
 				6DB4BEC723901B5300BD1CF2 /* IPAServer.h */,
 				6DB4BEC823901B5300BD1CF2 /* IPAServer.m */,
-				7E03038624A04A6A0035E50F /* IPAConnection.h */,
-				7E03038724A04A6A0035E50F /* IPAConnection.m */,
 				6DCAF23F23940382000FCCB5 /* IPAServerConfiguration.h */,
 				6DCAF24023940382000FCCB5 /* IPAServerConfiguration.m */,
-				6DCAF2422394039B000FCCB5 /* IPAServerPackage.h */,
-				6DCAF2432394039B000FCCB5 /* IPAServerPackage.m */,
+				6D91091E24547FD300D043E7 /* IPAServerDefaultIcon.h */,
 				6D0F6B93239535FC00822132 /* IPAServerManifest.h */,
 				6D0F6B94239535FC00822132 /* IPAServerManifest.m */,
 				6D0F6B9623953CE300822132 /* IPAServerManifestManager.h */,
 				6D0F6B9723953CE300822132 /* IPAServerManifestManager.m */,
+				6DCAF2422394039B000FCCB5 /* IPAServerPackage.h */,
+				6DCAF2432394039B000FCCB5 /* IPAServerPackage.m */,
 				6DCAF24523940CE4000FCCB5 /* IPAServerUtils.h */,
 				6DCAF24623940CE4000FCCB5 /* IPAServerUtils.m */,
-				6D91091E24547FD300D043E7 /* IPAServerDefaultIcon.h */,
 			);
 			path = IPAServer;
 			sourceTree = "<group>";

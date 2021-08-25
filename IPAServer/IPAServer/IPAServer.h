@@ -11,20 +11,16 @@
 #import "IPAServerConfiguration.h"
 #import "IPAServerPackage.h"
 #import "IPAServerManifest.h"
+#import "IPASecurity.h"
 
-/*
- - /
- -- {BUNDLE_ID}/
- --- {VERSION}/
- ---- package.ipa
- ---- icon.png
- ---- Info.plist
- 
- */
+FOUNDATION_EXTERN NSString *IPASSLDirectory;
+FOUNDATION_EXTERN NSString *IPAPackagesDirectory;
 
 @interface IPAServer : NSObject
 
 @property (nonatomic, copy, readonly) IPAServerConfiguration *configuration;
+
+@property (nonatomic, strong, readonly) IPASecurity *security;
 
 @property (nonatomic, strong, readonly) NSArray<IPAServerPackage *> *packages;
 

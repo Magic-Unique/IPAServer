@@ -51,10 +51,12 @@
 
 @interface IPASecurity : NSObject
 
-+ (MUPath *)rootCerPath;
+@property (nonatomic, strong, readonly) MUPath *rootDirectory;
 
-+ (MUPath *)rootPEMPath;
+- (instancetype)initWithRootDirectory:(MUPath *)rootDirectory;
 
-+ (SecIdentityRef)identityForCN:(NSString *)CN;
+- (SecIdentityRef)identityForCommonName:(NSString *)commonName;
+
+- (MUPath *)rootCerPath;
 
 @end

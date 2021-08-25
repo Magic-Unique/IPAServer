@@ -8,27 +8,34 @@
 
 #import "IPASecurity.h"
 
-#define IPA_CONFIG_ROOT [[MUPath homePath] subpathWithComponent:@".IPAServer"]
+#define IPA_CONFIG_ROOT [[MUPath homePath] subpathWithComponent:@".IPAServer/ssl"]
 
 @implementation IPASecurity
 
-+ (MUPath *)rootCerPath {
-    MUPath *config = IPA_CONFIG_ROOT;
-    MUPath *rootCer = [config subpathWithComponent:@"CA.cer"];
+- (instancetype)initWithRootDirectory:(MUPath *)rootDirectory {
+    self = [super init];
+    if (self) {
+        _rootDirectory = rootDirectory;
+    }
+    return self;
+}
+
+- (MUPath *)rootCerPath {
+    MUPath *rootCer = [self.rootDirectory subpathWithComponent:@"CA.cer"];
     if (rootCer.isFile) {
         return rootCer;
     }
-    [config createDirectoryWithCleanContents:NO];
-    NSLog(@"Create CA.cer");
-    [[self __CA_CER] writeToFile:rootCer.string atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    [rootCer.superpath createDirectoryWithCleanContents:NO];
+    CLVerbose(@"Create CA.cer");
+    [[IPASecurity __CA_CER] writeToFile:rootCer.string atomically:YES encoding:NSUTF8StringEncoding error:nil];
     return rootCer;
 }
 
-+ (SecIdentityRef)identityForCN:(NSString *)CN {
-    return [self findIdentity:CN];
+- (SecIdentityRef)identityForCommonName:(NSString *)commonName {
+    return [self findIdentity:commonName];
 }
 
-+ (MUPath *)rootPEMPath {
+- (MUPath *)rootPEMPath {
     MUPath *config = IPA_CONFIG_ROOT;
     MUPath *rootPEM = [config subpathWithComponent:@"CA.pem"];
     if (rootPEM.isFile) {
@@ -36,7 +43,7 @@
     }
     [config createDirectoryWithCleanContents:NO];
     NSLog(@"Create CA.pem");
-    [[self __CA_PEM] writeToFile:rootPEM.string atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    [[IPASecurity __CA_PEM] writeToFile:rootPEM.string atomically:YES encoding:NSUTF8StringEncoding error:nil];
     return rootPEM;
 }
 
@@ -94,8 +101,7 @@
             " stringByReplacingOccurrencesOfString:@"  " withString:@""];
 }
 
-+ (BOOL)__makePKCS12ForCN:(NSString *)CN {
-    MUPath *root = IPA_CONFIG_ROOT;
+- (BOOL)__makePKCS12ForCN:(NSString *)CN {
     
     __unused NSString *CA_PEM = [self rootPEMPath].lastPathComponent;
     __unused NSString *CA_CER = [self rootCerPath].lastPathComponent;
@@ -106,6 +112,7 @@
     __unused NSString *SERVER_DER = [NSString stringWithFormat:@"%@.der", CN];
     __unused NSString *SERVER_P12 = [NSString stringWithFormat:@"%@.p12", CN];
     
+    MUPath *root = self.rootDirectory;
     NSString *openssl = @"/usr/bin/openssl";
     
 #define IPAOpenSSL(...) CLLaunch(root.string, openssl, __VA_ARGS__, nil)
@@ -146,13 +153,18 @@
         return NO;
     }
     
+#undef IPAOpenSSL
+    
     return YES;
 }
 
-+ (SecIdentityRef)findIdentity:(NSString *)CN {
-    MUPath *der = [IPA_CONFIG_ROOT subpathWithComponent:[NSString stringWithFormat:@"%@.der", CN]];
+- (SecIdentityRef)findIdentity:(NSString *)commonName {
+    MUPath *root = [self.rootDirectory subpathWithComponent:commonName];
+    MUPath *der = [root subpathWithComponent:[NSString stringWithFormat:@"%@.der", commonName]];
+    
     if (!der.isFile) {
-        [self __makePKCS12ForCN:CN];
+        CLVerbose(@"Create DER file.");
+        [self __makePKCS12ForCN:commonName];
     }
     if (!der.isFile) {
         CLVerbose(@"Can not found der");

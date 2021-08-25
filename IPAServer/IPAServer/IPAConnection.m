@@ -48,7 +48,7 @@
 }
 
 - (NSArray *)sslIdentityAndCertificates {
-    SecIdentityRef identity = [IPASecurity identityForCN:[IPAServerUtils LANAddress]];
+    SecIdentityRef identity = [[self __mainServer].security identityForCommonName:[IPAServerUtils LANAddress]];
     if (identity) {
         return @[(__bridge_transfer id)identity];
     }
