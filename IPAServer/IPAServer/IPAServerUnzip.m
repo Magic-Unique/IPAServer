@@ -15,10 +15,10 @@
     NSError *error = nil;
     
     do {
-        CLInfo(@"Unzip %@", self.ipaPath.lastPathComponent);
+        CLInfo(IPALocalizedString("unzip_start", nil), self.ipaPath.lastPathComponent);
         ZZArchive *archive = [ZZArchive archiveWithURL:self.ipaPath.fileURL error:&error];
         if (error) {
-            CLError(@"Unzip failed.");
+            CLError(IPALocalizedString("unzip_create_archive_failed", nil));
             break;
         }
         
@@ -44,10 +44,10 @@
             }
         }
         if (!appEntryKey) {
-            CLError(@"Can not found *.app folder");
+            CLError(IPALocalizedString("unzip_cannot_found_app", nil));
             break;
         }
-        CLVerbose(@"Found app entry: %@", appEntryKey);
+        CLVerbose(IPALocalizedString("unzip_found_app", nil), appEntryKey);
         _entries = entries;
         _appKey = appEntryKey;
         
@@ -59,30 +59,25 @@
             ZZArchiveEntry *entry = entries[infoPlistKey];
             if (entry && [self writeEntry:entry to:infoPath]) {
                 info = [NSDictionary dictionaryWithContentsOfFile:infoPath.string];
-            } else {
-                CLVerbose(@"没办法读取info");
             }
             info;
         });
         if (!info) {
-            CLError(@"Can not read Info.plist file");
+            CLError(IPALocalizedString("unzip_cannot_found_info_plist", nil));
             break;
         }
         _info = info;
         
         // Copy ipa
-        if ([self.ipaPath copyTo:[self.toDirectory subpathWithComponent:@"package.ipa"] autoCover:YES]) {
-            CLError(@"Can not copy ipa file");
-            break;
-        }
+        [self.ipaPath copyTo:[self.toDirectory subpathWithComponent:@"package.ipa"] autoCover:YES];
         
         // Copy icon
         NSString *iconKey = [self findAppIcon];
         if (iconKey) {
-            CLVerbose(@"Found icon entry: %@", iconKey);
+            CLVerbose(IPALocalizedString("unzip_found_icon", nil), iconKey);
             [self writeEntry:self.entries[iconKey] to:[self.toDirectory subpathWithComponent:@"icon.png"]];
         } else {
-            CLWarning(@"Can not found icon entry");
+            CLWarning(IPALocalizedString("unzip_cannot_found_icon", nil));
         }
         
         _package = [[IPAServerPackage alloc] initWithRootDirectory:self.toDirectory];

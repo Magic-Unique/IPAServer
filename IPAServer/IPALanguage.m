@@ -65,7 +65,14 @@
     
     strings[@"start_failed"] = @"Can not start server at %@";
     strings[@"start_succee"] = @"Server start at %@";
-    strings[@"read_hash"] = @"Reading MD5...";
+    
+    strings[@"unzip_start"] = @"Unzip %@";
+    strings[@"unzip_create_archive_failed"] = @"Can not read zip archive";
+    strings[@"unzip_cannot_found_app"] = @"Can not found *.app folder";
+    strings[@"unzip_found_app"] = @"Found app entry: %@";
+    strings[@"unzip_cannot_found_info_plist"] = @"Can not read Info.plist file";
+    strings[@"unzip_cannot_found_icon"] = @"Can not found icon entry";
+    strings[@"unzip_found_icon"] = @"Found icon entry: %@";
 }
 
 + (void)__strings_zh_CN:(NSMutableDictionary *)strings {
@@ -91,7 +98,14 @@
     
     strings[@"start_failed"] = @"无法监听端口 %@";
     strings[@"start_succee"] = @"开始监听端口 %@";
-    strings[@"read_hash"] = @"读取 MD5...";
+    
+    strings[@"unzip_start"] = @"解压 %@";
+    strings[@"unzip_create_archive_failed"] = @"无法读取压缩文件";
+    strings[@"unzip_cannot_found_app"] = @"找不到 *.app 文件夹";
+    strings[@"unzip_found_app"] = @"读取 app: %@";
+    strings[@"unzip_cannot_found_info_plist"] = @"无法读取 Info.plist 文件";
+    strings[@"unzip_cannot_found_icon"] = @"找不到图标";
+    strings[@"unzip_found_icon"] = @"读取图标: %@";
 }
 
 @end
