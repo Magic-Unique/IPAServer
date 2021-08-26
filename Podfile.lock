@@ -79,7 +79,7 @@ PODS:
   - libextobjc/RuntimeExtensions (0.6)
   - libextobjc/UmbrellaHeader (0.6)
   - MUFoundation/MUPath (0.0.6)
-  - SSZipArchive (2.2.2)
+  - QRCode (0.0.1)
   - zipzap (8.1.1)
 
 DEPENDENCIES:
@@ -89,7 +89,7 @@ DEPENDENCIES:
   - GCDWebServer
   - libextobjc
   - MUFoundation/MUPath
-  - SSZipArchive
+  - QRCode (from `./qrencode`)
   - zipzap
 
 SPEC REPOS:
@@ -102,8 +102,11 @@ SPEC REPOS:
     - GCDWebServer
     - libextobjc
     - MUFoundation
-    - SSZipArchive
     - zipzap
+
+EXTERNAL SOURCES:
+  QRCode:
+    :path: "./qrencode"
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -114,9 +117,9 @@ SPEC CHECKSUMS:
   GCDWebServer: ead88cd14596dd4eae4f5830b8877c87c8728990
   libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
   MUFoundation: 7ba494a348139d1a355a3f20b5ba3de11720c9d4
-  SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
+  QRCode: d22c7bd5df26fa311024e2a855bc08d74e642aa2
   zipzap: 940162d9c9c60472c2eab341385e4214da0fdf1c
 
-PODFILE CHECKSUM: efdad9e26b7b64f93da078296808896346c07ee7
+PODFILE CHECKSUM: 197d11ef96a462dcf4aacc17e08c5237235ea408
 
 COCOAPODS: 1.8.4

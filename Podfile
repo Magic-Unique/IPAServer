@@ -10,13 +10,13 @@ target 'IPAServer' do
 
   # Pods for IPAServer
 
+  pod 'QRCode', :path => './qrencode'
   pod 'CommandLine'
   pod 'MUFoundation/MUPath'
   pod 'GCDWebServer'
   pod 'CocoaHTTPServer'
   pod 'libextobjc'
   pod 'AFNetworking'
-  pod 'SSZipArchive'
   pod 'zipzap'
 
 end
