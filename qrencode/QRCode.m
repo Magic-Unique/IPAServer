@@ -53,6 +53,7 @@
     code->_version = _qrcode->version;
     code->_map = map;
     code->_string = [string copy];
+    QRcode_free(_qrcode);
     return code;
 }
 
